@@ -1,0 +1,46 @@
+<html>
+<head> 
+<title> ToDo App </title>
+ <link href="/styles.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+<div class="head">
+<h2> A Simple ToDo List</h2>
+
+<form action ="/addtask" method="POST" class="add">
+    <input type="text" class="input" name="newtask" autocomplete="off" placeholder="add one or more task separate by ' ; '">
+    <button class="button"> Add Task </button>
+</form>
+</div>
+<div class="view">
+    <div class="left">
+    <h2 class="show"> Added Task </h2>
+    <button type="submit" class="btn button" form="left"> Done </button>
+    <form method="POST" action="/donetask" id="left">
+        <div class="form">
+        <% for( var i = 0; i < task.length; i++){ %>
+            <div class="option">
+            <input type="checkbox" name="check" class="list" value="<%= task[i] %>" /> <%= task[i] %>
+            </div>
+        <% } %>
+        </div>
+    </form>
+    </div>
+    <div class="right">
+    <h2 class="show"> Completed task </h2>
+    <button type="submit" class="btn button" form="right">Delete All</button>
+    <form method="POST" action="/deletetask" id="right">
+        <div class="form">
+        <% for(var i = 0; i < complete.length; i++){ %>
+            <li><%= complete[i] %></li>
+        <% } %>
+        </div>
+    </form>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
